@@ -56,50 +56,39 @@ class DataTransformation:
                 raise CustomException(e,sys)
             
             
-    def initialize_data_transformation(self,train_arr,test_arr):
-        
+    def initialize_data_transformation(self, train_file_path, test_file_path):
         try:
-            train_df = pd.read_csv(train_arr)
-            test_df = pd.read_csv(test_arr)
-            logging.info("read data as data frame")
-            logging.info("obtaining preprocessor file path")
-            
+            train_df = pd.read_csv(train_file_path)
+            test_df = pd.read_csv(test_file_path)
+            logging.info("Read train and test data as dataframes")
             target_columns = ['TARGET']
-            
             preprocessor_obj = self.get_data_transformer_obj()
             
             input_feature_train_df = train_df.drop(columns=target_columns)
             target_feature_train_df = train_df[target_columns]
             
-            
             input_feature_test_df = test_df.drop(columns=target_columns)
             target_feature_test_df = test_df[target_columns]
+            logging.info("Applying preprocessing pipelines on train and test datasets")
             
-            logging.info(f"Applying preprocessor object on training and test dataset")
             input_feature_train_arr = preprocessor_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr = preprocessor_obj.transform(input_feature_test_df)
             
             smote = SMOTE(random_state=42)
             X_train_resampled, y_train_resampled = smote.fit_resample(
             input_feature_train_arr, target_feature_train_df.values.ravel()
-        )
+            )
+            
             logging.info(f"Before SMOTE: {np.bincount(target_feature_train_df.values.ravel())}")
             logging.info(f"After SMOTE: {np.bincount(y_train_resampled)}")
-
             
-            train_arr = np.c_[X_train_resampled,y_train_resampled]
-            test_arr = np.c_[input_feature_test_arr,target_feature_test_df.values]
+            train_arr = np.c_[X_train_resampled, y_train_resampled]
+            test_arr = np.c_[input_feature_test_arr, target_feature_test_df.values]
             
             saved_obj(
-                file_path = self.data_transformation_config.preprocessor_file_path_obj,
-                obj=preprocessor_obj
-                
-            )
-            
-            return(
-                train_arr,test_arr,
-                self.data_transformation_config.preprocessor_file_path_obj
-            )
-            
+            file_path=self.data_transformation_config.preprocessor_file_path_obj,
+            obj=preprocessor_obj)
+            return X_train_resampled, y_train_resampled, input_feature_test_arr, target_feature_test_df.values
+
         except Exception as e:
-            raise CustomException(e,sys)
+            raise CustomException(e, sys)
