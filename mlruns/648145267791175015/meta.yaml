@@ -1,0 +1,6 @@
+artifact_location: file:///E:/Machine Learning Project/Bank_Loan_Default/mlruns/648145267791175015
+creation_time: 1752957565507
+experiment_id: '648145267791175015'
+last_update_time: 1752957565507
+lifecycle_stage: active
+name: loan_default_prediction

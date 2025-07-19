@@ -1,0 +1,14 @@
+artifact_uri: file:///E:/Machine Learning Project/Bank_Loan_Default/mlruns/648145267791175015/4aced83ecfcd44f1a3df0f4ee19ff2cd/artifacts
+end_time: 1752959494187
+entry_point_name: ''
+experiment_id: '648145267791175015'
+lifecycle_stage: active
+run_id: 4aced83ecfcd44f1a3df0f4ee19ff2cd
+run_name: Loan Default Training
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1752959399267
+status: 3
+tags: []
+user_id: ThinkPad-T570Worksta

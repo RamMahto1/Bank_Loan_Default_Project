@@ -5,6 +5,13 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import f1_score, precision_score, accuracy_score, recall_score
 from src.exception import CustomException
 from src.logger import logging
+import joblib
+
+
+def save_model(model, file_path):
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    joblib.dump(model, file_path)
+    print(f"Model saved at: {file_path}")
 
 
 def saved_obj(file_path, obj):

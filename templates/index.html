@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Loan Defaulter Prediction</title>
+</head>
+<body>
+    <h1>Loan Defaulter Application</h1>
+    <h2>Enter your data for prediction</h2>
+
+    <form action="/predict" method="post">
+        <label for="NAME_CONTRACT_TYPE">Contract Type:</label>
+        <select name="NAME_CONTRACT_TYPE" required>
+            <option value="Cash loans">Cash loans</option>
+            <option value="Revolving loans">Revolving loans</option>
+        </select>
+        <br><br>
+
+        <label for="CODE_GENDER">Gender:</label>
+        <select name="CODE_GENDER" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <br><br>
+
+        <label for="AMT_INCOME_TOTAL">Income Total:</label>
+        <input type="number" name="AMT_INCOME_TOTAL" required step="any" />
+        <br><br>
+
+        <label for="AMT_CREDIT">Credit Amount:</label>
+        <input type="number" name="AMT_CREDIT" required step="any" />
+        <br><br>
+
+        <label for="DAYS_BIRTH">Days of Birth (negative number):</label>
+        <input type="number" name="DAYS_BIRTH" required />
+        <br><br>
+
+        <label for="PREV_AMT_APPLICATION_MEAN">Prev Application Mean:</label>
+        <input type="number" name="PREV_AMT_APPLICATION_MEAN" required step="any" />
+        <br><br>
+
+        <label for="PREV_AMT_CREDIT_MEAN">Prev Credit Mean:</label>
+        <input type="number" name="PREV_AMT_CREDIT_MEAN" required step="any" />
+        <br><br>
+
+        <label for="NUM_PREV_LOANS">Number of Prev Loans:</label>
+        <input type="number" name="NUM_PREV_LOANS" required step="any" />
+        <br><br>
+
+        <label for="HAS_PREV_LOANS">Has Previous Loans (1 or 0):</label>
+        <input type="number" name="HAS_PREV_LOANS" required />
+        <br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_text %}
+        <h2>{{ prediction_text }}</h2>
+    {% endif %}
+</body>
+</html>

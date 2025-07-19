@@ -4,6 +4,8 @@ scikit-learn
 imblearn
 catboost
 xgboost
+flask
+mlflow
 
 
 #-e .

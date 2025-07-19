@@ -1,0 +1,2 @@
+experiment_name: "loan_default_prediction"
+tracking_uri: "mlruns"  # Local folder to store MLflow logs and models

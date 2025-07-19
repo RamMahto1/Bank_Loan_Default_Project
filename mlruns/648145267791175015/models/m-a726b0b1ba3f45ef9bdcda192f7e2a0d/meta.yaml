@@ -1,0 +1,10 @@
+artifact_location: file:///E:/Machine Learning Project/Bank_Loan_Default/mlruns/648145267791175015/models/m-a726b0b1ba3f45ef9bdcda192f7e2a0d/artifacts
+creation_timestamp: 1752958815639
+experiment_id: '648145267791175015'
+last_updated_timestamp: 1752958824316
+model_id: m-a726b0b1ba3f45ef9bdcda192f7e2a0d
+model_type: null
+name: model
+source_run_id: ece5c46fd73f47fc9343f5e268e49bc5
+status: 2
+status_message: null
